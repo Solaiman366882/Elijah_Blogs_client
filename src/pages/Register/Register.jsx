@@ -1,14 +1,32 @@
 import { Label, TextInput } from "flowbite-react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+	const {createUser} = useContext(AuthContext);
 	const handleRegister = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const name = form.name.value;
 		const email = form.email.value;
 		const password = form.password.value;
-		console.log(email, password, name);
+		const photo = form.photo.value;
+		console.log(email, password, name,photo);
+
+		createUser(email,password)
+		.then(res => {
+			const user = res.user;
+			console.log('user after credential:',user);
+			updateProfile(user,{
+				displayName:name,
+				photoURL:photo
+			})
+			.then(() => {
+				alert('user created successfully');
+			})
+		})
 	};
 	return (
 		<div className="w-full min-h-[80vh] py-10 flex flex-col justify-center items-center">
@@ -29,6 +47,18 @@ const Register = () => {
 							type="text"
 							placeholder="Enter Your name"
 							name="name"
+							required
+						/>
+					</div>
+					<div>
+						<div className="mb-2 block">
+							<Label htmlFor="photo" value="Your Photo" />
+						</div>
+						<TextInput
+							id="photo"
+							type="text"
+							placeholder="Enter Your Photo url"
+							name="photo"
 							required
 						/>
 					</div>
