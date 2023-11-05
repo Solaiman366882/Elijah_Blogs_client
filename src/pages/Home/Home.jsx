@@ -1,10 +1,10 @@
-import { Button } from "flowbite-react";
+
+import NewsLetter from "../../component/NewsLetter/NewsLetter";
 
 const Home = () => {
     return (
         <div>
-            this is home.
-            <Button></Button>
+            <NewsLetter></NewsLetter>
         </div>
     );
 };

@@ -1,0 +1,35 @@
+.newsletter-section {
+    background: linear-gradient(120deg, rgba(6,73,182,0.9668242296918768) 50%, rgba(255,0,0,0.9304096638655462) 100%);
+    /* background: linear-gradient(120deg, rgba(82,72,244,0.927608543417367) 50%, rgba(147,44,250,0.9360119047619048) 100%); */
+    margin-top: 70px;
+    border-radius: 12px;
+}
+.newsletter-section .news-title h2 {
+    color: var(--white);
+    font-size: 38px;
+    font-weight: 700;
+}
+.newsletter-section .news-title p {
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 600;
+}
+.newsletter-section .news-form-area {
+    background-color: rgba(255,255,255,.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 40px;
+    border-radius: 20px;
+}
+.newsletter-section .news-form-area input{
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+    height: 48px;
+    width: 100%;
+    padding: 0 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color-main);
+    border-radius: 28px;
+}
