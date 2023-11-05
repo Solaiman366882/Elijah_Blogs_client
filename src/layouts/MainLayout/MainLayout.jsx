@@ -7,7 +7,7 @@ const MainLayout = () => {
             <div>
                 <Header></Header>
             </div>
-            <div>
+            <div className="max-w-screen-xl mx-auto px-5">
                 <Outlet></Outlet>
             </div>
         </div>

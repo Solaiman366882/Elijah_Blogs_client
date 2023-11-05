@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --red:#ff0000;
-    --text_color:#1c1717;
-}

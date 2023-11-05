@@ -7,9 +7,7 @@ const Header = () => {
 	return (
 		<header className="p-3 shadow-xl">
 			<Navbar fluid rounded>
-				<Navbar.Brand >
-					<Link to='/'><img src={logo} className="mr-3 h-6 sm:h-9" alt=" Logo" /></Link>
-				</Navbar.Brand>
+			<Link to='/'><img src={logo} className="mr-3 h-6 sm:h-9" alt=" Logo" /></Link>
 				<div className="flex md:order-2">
 					<Dropdown
 						arrowIcon={false}
@@ -43,7 +41,7 @@ const Header = () => {
 							isPending ? "pending" : isActive ? "nav-item active" : "nav-item"
 						}
 					>
-						<Navbar.Link>Home</Navbar.Link>
+						Home
 					</NavLink>
 					<NavLink
 						to="/addBlog"
@@ -51,7 +49,7 @@ const Header = () => {
 							isPending ? "pending" : isActive ? "nav-item active" : "nav-item"
 						}
 					>
-						<Navbar.Link>Add Blog</Navbar.Link>
+						Add Blog
 					</NavLink>
 					<NavLink
 						to="/allBlog"
@@ -59,7 +57,7 @@ const Header = () => {
 							isPending ? "pending" : isActive ? "nav-item active" : "nav-item"
 						}
 					>
-						<Navbar.Link>All Blogs</Navbar.Link>
+						All Blogs
 					</NavLink>
 					<NavLink
 						to="/featured"
@@ -67,7 +65,7 @@ const Header = () => {
 							isPending ? "pending" : isActive ? "nav-item active" : "nav-item"
 						}
 					>
-						<Navbar.Link>Featured Blogs</Navbar.Link>
+						Featured Blogs
 					</NavLink>
 					<NavLink
 						to="/wishlist"
@@ -75,7 +73,7 @@ const Header = () => {
 							isPending ? "pending" : isActive ? "nav-item active" : "nav-item"
 						}
 					>
-						<Navbar.Link>Wishlist</Navbar.Link>
+						Wishlist
 					</NavLink>
 					<NavLink
 						to="/register"
@@ -83,7 +81,7 @@ const Header = () => {
 							isPending ? "pending" : isActive ? "nav-item active" : "nav-item"
 						}
 					>
-						<Navbar.Link>Register</Navbar.Link>
+						Register
 					</NavLink>
 				</Navbar.Collapse>
 			</Navbar>

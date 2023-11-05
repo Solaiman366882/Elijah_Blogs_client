@@ -3,6 +3,6 @@
     font-weight: 600;
     color:var(--text_color);
 }
-.nav-item.active a{
+.nav-item.active {
     color:var(--red);
 }
