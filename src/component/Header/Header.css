@@ -1,0 +1,8 @@
+.nav-item{
+    font-size: 17px;
+    font-weight: 600;
+    color:var(--text_color);
+}
+.nav-item.active a{
+    color:var(--red);
+}
