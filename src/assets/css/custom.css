@@ -9,7 +9,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700;800;900&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;0,1000;1,800&display=swap');
 
-
+/* ================== Global Css Start ================== */
 body {
     font-family: 'Inter', sans-serif;
 }
@@ -54,6 +54,7 @@ h2 {
     border: 1px solid var(--red);
     border-radius: 8px;
     text-transform: capitalize;
+    transform: 0.8s;
 }
 .btn:hover{
     background: transparent;
@@ -63,16 +64,33 @@ h2 {
     color: var(--red);
     font-weight: 600;
 }
+/* ================== Global Css End ================== */
+
 /* ================== Blog Page Css Start ================== */
 .blog-form-area {
-    border: 2px solid;
+    border: 2px solid var(--text_color);
     margin-top: 30px;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .blog-form-area .single-input {
     width: 100%;
 }
+.blog-form-area .single-input select,
 .blog-form-area .single-input input{
     width: 100%;
+    border-radius: 5px;
+    color: var(--text_color);
 }
-/* ================== Blog Page Css Start ================== */
+.blog-form-area .single-input input.btn{
+    color: var(--white);
+}
+.blog-form-area .single-input input.btn:hover{
+    width: 100%;
+    border-radius: 5px;
+    color: var(--red);
+}
+.blog-form-area .single-input select option{
+    padding:6px;
+}
+/* ================== Blog Page Css End ================== */
