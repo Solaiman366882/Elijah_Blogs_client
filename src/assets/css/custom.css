@@ -64,6 +64,62 @@ h2 {
     color: var(--red);
     font-weight: 600;
 }
+.title-section {
+    width: 100%;
+    text-align: center;
+}
+.title-section {
+    width: 100%;
+    text-align: center;
+}
+.title-section h2 {
+    font-size: 40px;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: var(--heading_color);
+    z-index: 1;
+}
+.title-section p {
+    margin-top: 15px;
+    font-size: 18px;
+    text-transform: capitalize;
+    word-spacing: 2px;
+    font-weight: 600;
+    color: var(--text_color);
+}
+.title-section h2::after {
+    content: 'title';
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    font-size: 90px;
+    transform: translate(-50%,-50%);
+    color: #1e263317;
+    z-index: -1;
+    font-weight: 700;
+    letter-spacing: 40px;
+    text-transform: uppercase;
+
+}
+.title-section h2::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 6px;
+    border-radius: 6px;
+    background: var(--red);
+
+
+}
+
+
+
 /* ================== Global Css End ================== */
 
 /* ================== Blog Page Css Start ================== */
