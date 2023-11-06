@@ -1,5 +1,28 @@
+import axios from 'axios';
 import './NewsLetter.css'
+import Swal from 'sweetalert2';
 const NewsLetter = () => {
+
+	const handleNewsLetter = e => {
+
+		e.preventDefault();
+		const form = e.target;
+		const name = form.name.value;
+		const email = form.email.value;
+		console.log(name,email);
+		const newsLetter = {name,email}
+		axios.post('http://localhost:5000/newsLetter',newsLetter)
+		.then(data => {
+			const result = data.data;
+			if (result?.insertedId) {
+				Swal.fire({
+					title: "Good job!",
+					text: "Subscription Completed",
+					icon: "success",});
+			}
+		})
+	}
+
 	return (
 		<div className="newsletter-section">
 			<div className="flex justify-between px-8 py-14 gap-8">
@@ -11,7 +34,7 @@ const NewsLetter = () => {
 					</p>
 				</div>
 				<div className='news-form-area flex-1'>
-					<form>
+					<form onSubmit={handleNewsLetter}>
 						<label htmlFor="esub_name" className="sr-only">
 							Name
 						</label>
@@ -34,6 +57,7 @@ const NewsLetter = () => {
 							type="email"
 							name="email"
 							placeholder="Your email address"
+							required
 						/>
 						<button className="btn btn-block" type="submit">
 							<span>Subscribe</span>

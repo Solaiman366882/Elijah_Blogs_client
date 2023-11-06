@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddBlog = () => {
 	const { user } = useContext(AuthContext);
@@ -34,7 +35,10 @@ const AddBlog = () => {
 				// console.log(data.data);
 				const result = data.data;
 				if (result?.insertedId) {
-					alert("congrats you successfully added a blog");
+					Swal.fire({
+						title: "Good job!",
+						text: "Successfully added a Blog",
+						icon: "success",});
 				}
 			})
 			.catch((err) => console.log(err));
