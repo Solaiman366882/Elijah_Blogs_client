@@ -1,22 +1,44 @@
-const AddBlog = () => {
-    const handleAddBlog = e => {
-        e.preventDefault();
-        const form = e.target;
-        const title = form.title.value;
-        const blogImg = form.blogImg.value;
-        const shortDescription = form.shortDescription.value;
-        const category = form.category.value;
-        const description = form.description.value;
-        const newBlog = {
-            title,
-            blogImg,
-            shortDescription,
-            category,
-            description,
-        }
-        console.log(newBlog);
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
-    }
+const AddBlog = () => {
+	const { user } = useContext(AuthContext);
+	const handleAddBlog = (e) => {
+		e.preventDefault();
+		const form = e.target;
+		const title = form.title.value;
+		const blogImg = form.blogImg.value;
+		const shortDescription = form.shortDescription.value;
+		const category = form.category.value;
+		const description = form.description.value;
+		const blogOwner = user.displayName;
+		const blogOwnerEmail = user.email;
+		const blogOwnerImg = user.photoURL;
+		const postingTime = new Date();
+		const newBlog = {
+			title,
+			blogImg,
+			shortDescription,
+			category,
+			description,
+			blogOwner,
+			blogOwnerEmail,
+			blogOwnerImg,
+			postingTime,
+		};
+		//send blog data to database
+		axios
+			.post("http://localhost:5000/blogs",  newBlog )
+			.then((data) => {
+				console.log(data.data);
+				const result = data.data;
+				if (result?.insertedId) {
+					alert("congrats you successfully added a blog");
+				}
+			})
+			.catch((err) => console.log(err));
+	};
 	return (
 		<div className="max-w-screen-xl mx-auto px-5 py-10">
 			<div className="add-blog-area">
@@ -40,7 +62,7 @@ const AddBlog = () => {
 									placeholder="Enter a blog image url"
 								/>
 							</div>
-                            <div className="single-input">
+							<div className="single-input">
 								<input
 									type="text"
 									name="shortDescription"
@@ -63,13 +85,13 @@ const AddBlog = () => {
 									<option value="mongodb">MongoDB</option>
 								</select>
 							</div>
-							
+
 							<div className="single-input col-span-2">
 								<input
 									type="text"
 									name="description"
 									placeholder="Write Details here..."
-                                    className="h-40"
+									className="h-40"
 								/>
 							</div>
 							<div className="single-input col-span-2">
