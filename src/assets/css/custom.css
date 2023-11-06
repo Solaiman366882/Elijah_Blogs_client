@@ -3,6 +3,7 @@
     --text_color: #1c1717;
     --heading_color: #1e2633;
     --white: #ffffff;
+    --secondary-white:#e6d8d8;
 }
 
 /* Google fonts Nunito */
@@ -18,7 +19,9 @@ h1,
 h2 {
     font-family: 'Nunito', sans-serif;
 }
-
+img{
+    vertical-align: middle;
+}
 .login-title {
     padding-bottom: 43px;
     width: 100%;
@@ -103,6 +106,9 @@ h2 {
     text-transform: uppercase;
 
 }
+.recent-blog-section .title-section h2::after {
+    content: 'recent';
+}
 .title-section h2::before {
     content: '';
     display: block;
@@ -114,8 +120,6 @@ h2 {
     height: 6px;
     border-radius: 6px;
     background: var(--red);
-
-
 }
 
 

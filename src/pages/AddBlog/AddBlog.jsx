@@ -31,7 +31,7 @@ const AddBlog = () => {
 		axios
 			.post("http://localhost:5000/blogs",  newBlog )
 			.then((data) => {
-				console.log(data.data);
+				// console.log(data.data);
 				const result = data.data;
 				if (result?.insertedId) {
 					alert("congrats you successfully added a blog");
