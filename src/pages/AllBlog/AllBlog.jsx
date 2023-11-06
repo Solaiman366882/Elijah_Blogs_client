@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import BlogCard from "../../component/BlogCard/BlogCard";
 import { useState } from "react";
+import searchIcon from "../../assets/images/searchIcon.png";
 
 const AllBlog = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -19,11 +20,16 @@ const AllBlog = () => {
 		const filteredBlogs = blogs?.filter(
 			(blog) => blog.category == category
 		);
-		console.log("filtered blogs", filteredBlogs);
 		setSearchedBlog(filteredBlogs);
-        setIsSearched(true)
-		console.log(category, blogs);
+		setIsSearched(true);
 	};
+    const handleSearch = e => {
+        e.preventDefault()
+        const searchValue = e.target.search.value;
+        const filteredBlog = blogs.filter(blog => blog?.title.includes(searchValue));
+        setSearchedBlog(filteredBlog)
+        setIsSearched(true);
+    }
 	if (isPending) {
 		return "Pending";
 	}
@@ -32,6 +38,13 @@ const AllBlog = () => {
 		<div>
 			<section className="all-blog-page">
 				<div className="secondary-banner">
+                    <div className="search-area max-w-lg mx-auto relative">
+                        <form onSubmit={handleSearch}>
+                            <input type="search" placeholder="Search Blogs" name="search" />
+                            <button><img src={searchIcon} alt="" /></button>
+                        </form>
+
+                    </div>
 					<div className="banner-title">
 						<h2>All Blogs</h2>
 					</div>
@@ -84,25 +97,24 @@ const AllBlog = () => {
 							ExpressJs
 						</button>
 					</div>
-					{/* {blogs?.length > 0 ? (
-						<div className="py-8 grid grid-cols-3 gap-5 lg:gap-7">
-							{blogs?.map((blog) => (
-								<BlogCard key={blog._id} blog={blog}></BlogCard>
-							))}
-						</div>
-					) : (
-						<div className="w-full min-h-[30vh] flex justify-center items-center">
-							<h1 className="text-center text-5xl capitalize text-gray-400">
-								not found
-							</h1>
-						</div>
-					)} */}
 					{isSearched ? (
-						<div className="py-8 grid grid-cols-3 gap-5 lg:gap-7">
-							{searchedBlogs?.map((blog) => (
-								<BlogCard key={blog._id} blog={blog}></BlogCard>
-							))}
-						</div>
+						searchedBlogs.length > 0 ? (
+							<div className="py-8 grid grid-cols-3 gap-5 lg:gap-7">
+								{searchedBlogs?.map((blog) => (
+									<BlogCard
+										key={blog._id}
+										blog={blog}
+									></BlogCard>
+								))}
+							</div>
+						) : (
+							<div className="w-full min-h-[30vh] flex flex-col gap-6 justify-center items-center">
+								<h1 className="text-center text-5xl capitalize text-gray-400">
+									not found
+								</h1>
+                                <button className="btn" onClick={() => setIsSearched(false)}>show all blogs</button>
+							</div>
+						)
 					) : (
 						<div className="py-8 grid grid-cols-3 gap-5 lg:gap-7">
 							{blogs?.map((blog) => (
