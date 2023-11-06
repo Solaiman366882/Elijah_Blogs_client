@@ -154,3 +154,56 @@ img{
     padding:6px;
 }
 /* ================== Blog Page Css End ================== */
+
+/* ================== All Blog Page Css Start ================== */
+.all-blog-page {
+    width: 100%;
+}
+.secondary-banner {
+    height: 50vh;
+    background: url(../images/all-blog-banner2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.secondary-banner::after {
+    position: absolute;
+    content: '';
+    width: 320px;
+    height: 70px;
+    background: var(--red);
+    bottom: 0;
+    left: 50%;
+    transform: scale(1) skew(18deg) translateX(-50%);
+}
+.secondary-banner .banner-title {
+    position: absolute;
+    bottom: 15px;
+    z-index: 1;
+}
+.secondary-banner .banner-title h2 {
+    color: var(--white);
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+}
+.all-blog-page .blog-category-area {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.all-blog-page h2.search-title {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+/* ================== All Blog Page Css End ================== */
