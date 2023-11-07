@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./BlogDetails.css";
 import { useContext, useState } from "react";
 import sendIcon from "../../assets/images/send.png";
@@ -14,8 +14,8 @@ const BlogDetails = () => {
 	const [commentsValue, setCommentsValue] = useState("");
 	const { id } = useParams();
 	const { user } = useContext(AuthContext);
-    
-    //data fetching for blog
+
+	//data fetching for blog
 	const { data: blog, isPending } = useQuery({
 		queryKey: ["singleBlog"],
 		queryFn: async () => {
@@ -24,7 +24,7 @@ const BlogDetails = () => {
 		},
 	});
 
-    //data fetching for comments
+	//data fetching for comments
 	const { isPending: commentLoading } = useQuery({
 		queryKey: ["comment"],
 		queryFn: async () => {
@@ -36,7 +36,7 @@ const BlogDetails = () => {
 		},
 	});
 
-    //destruct blog data
+	//destruct blog data
 	const {
 		title,
 		blogImg,
@@ -49,7 +49,7 @@ const BlogDetails = () => {
 		_id,
 	} = blog || {};
 
-    //get comments from input area
+	//get comments from input area
 	const handleCommentsValue = (e) => {
 		setCommentsValue(e.target.value);
 	};
@@ -75,8 +75,7 @@ const BlogDetails = () => {
 				title: "Oops...",
 				text: "You cant comment on your own blog",
 			});
-        }
-		else if (comment == '') {
+		} else if (comment == "") {
 			return Swal.fire({
 				icon: "error",
 				title: "Oops...",
@@ -88,7 +87,7 @@ const BlogDetails = () => {
 				.then((data) => {
 					// console.log(data.data);
 					const result = data.data;
-                    setComments([newComment,...comments]);
+					setComments([newComment, ...comments]);
 					if (result?.insertedId) {
 						toast.success("Successfully commented!");
 					}
@@ -96,7 +95,7 @@ const BlogDetails = () => {
 				.catch((err) => console.log(err));
 		}
 	};
-    //if pending  it will show skeleton
+	//if pending  it will show skeleton
 	if (isPending) {
 		return "Loading";
 	}
@@ -129,10 +128,22 @@ const BlogDetails = () => {
 								<h4>{shortDescription}</h4>
 								<p>{description}</p>
 							</div>
+							{user.email === blogOwnerEmail ? (
+								<div className="update-blog mt-5 text-right">
+									<Link to={`/updateBlog/${id}`}>
+										<button className="btn">Update</button>
+									</Link>
+								</div>
+							) : (
+								""
+							)}
 						</div>
 					</div>
 				</div>
 				<div className="blog-comment-area">
+					<div className="comments-header">
+						<h2>Comments</h2>
+					</div>
 					<div className="blog-comments py-7">
 						{commentLoading ? (
 							<h1>comments is loading</h1>
@@ -140,12 +151,17 @@ const BlogDetails = () => {
 							<div className="comments-area">
 								{comments.length > 0 ? (
 									<div className="comment-collection">
-										{
-                                            comments?.map(singleComment => <Comment key={singleComment._id} singleComment={singleComment}></Comment> )
-                                        }
+										{comments?.map((singleComment) => (
+											<Comment
+												key={singleComment._id}
+												singleComment={singleComment}
+											></Comment>
+										))}
 									</div>
 								) : (
-									<h2> No comments made yet</h2>
+									<h2 className="font-bold text-xl text-center text-gray-400">
+										No comments made yet
+									</h2>
 								)}
 							</div>
 						)}
@@ -153,7 +169,7 @@ const BlogDetails = () => {
 					<div className="blog-make-comment max-w-3xl mx-auto">
 						<textarea
 							onChange={handleCommentsValue}
-                            placeholder="Make Your Comment Here..."
+							placeholder="Make Your Comment Here..."
 							name="comment"
 							id="comment"
 							cols="30"
