@@ -105,7 +105,7 @@ img{
     color: var(--text_color);
 }
 .title-section h2::after {
-    content: 'title';
+    content: 'elijah';
     display: block;
     position: absolute;
     top: 45%;
@@ -121,6 +121,9 @@ img{
 }
 .recent-blog-section .title-section h2::after {
     content: 'recent';
+}
+.all-tag-section .title-section h2::after {
+    content: 'popular';
 }
 .title-section h2::before {
     content: '';

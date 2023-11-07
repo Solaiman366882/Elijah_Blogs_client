@@ -1,18 +1,18 @@
 
 .popular-tag-area {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
     padding: 80px 0;
-  }
-  
+}
   
   .popular-tag {
     text-align: center;
     width: 190px;
-    background: #d0d0d0;
+    background: var(--white);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   
   
@@ -30,26 +30,46 @@
     align-items: center;
     justify-content: space-between;
     width: 350px;
-    background: #d0d0d0;
+    background: var(--white);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   
+  .react:hover .text h6 ,
   .react:hover .text p {
-    color: red;
+    color: var(--red);
   }
   
   
   .react img {
     width: 50px;
-  }
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    outline: 1px solid red;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    outline-offset: 2px;
+}
+  .react .arrow-icon img {
+    width: 50px;
+    height: auto;
+    border-radius: none;
+    object-fit: contain;
+    outline: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    outline-offset: 0;
+}
   
   .react .text h6 {
     font-size: 25px;
-    color: #000;
-  }
+    color: var(--heading_color);
+    text-transform: capitalize;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+}
   
   .react .text p {
     font-size: 20px;
-    color: #000;
+    color: var(--text_color);
   }
   
   .arrow-icon {
@@ -59,7 +79,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 100px;
-    background-color: #695454;
+    background-color: var(--red);
     padding: 5px;
   }
   

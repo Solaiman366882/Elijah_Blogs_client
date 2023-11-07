@@ -1,44 +1,59 @@
 import './PopularTags.css';
+import tagIcon from '../../assets/images/tags.png';
+import reactImg from '../../assets/images/react-logo.png';
+import jsImg from '../../assets/images/js.png';
+import arrowIcon from '../../assets/images/arrow.png'
+import cssImg from '../../assets/images/css.jpg';
+import nodeImg from '../../assets/images/nodejs-logo.png';
+import es6Img from '../../assets/images/ES6.jpg';
+import htmlImg from '../../assets/images/html.webp'
 const PopularTags = () => {
 	return (
 		<div>
 			<section className="all-tag-section">
-				<div className="container">
+				<div className="max-w-screen-xl mx-auto px-5">
+                <div className="title-section mt-8">
+					<h2>Popular tags</h2>
+					<p>
+						browse recently added blog, and explore something new.
+					</p>
+				</div>
 					<div className="popular-tag-area">
 						<div className="popular-tag">
 							<img
-								src="all-course-img/icons8-tag-50.png"
+								src={tagIcon}
 								alt=""
+                                className='mx-auto'
 							/>
-							<h3>popular tag</h3>
+							<h3 className='capitalize'>popular tags</h3>
 						</div>
 
 						<div className="react">
 							<img
-								src="all-course-img/icons8-react-16.png"
+								src={reactImg}
 								alt=""
 							/>
 							<div className="text">
 								<h6>react</h6>
-								<p>Photos</p>
+								<p>Posts</p>
 							</div>
 							<div className="arrow-icon">
 								<img
-									src="all-course-img/icons8-right-arrow-50.png"
+									src={arrowIcon}
 									alt=""
 								/>
 							</div>
 						</div>
 
 						<div className="react">
-							<img src="all-course-img/icons8-js-50.png" alt="" />
+							<img src={jsImg} alt="" />
 							<div className="text">
 								<h6>javascript</h6>
-								<p>Photos</p>
+								<p>Posts</p>
 							</div>
 							<div className="arrow-icon">
 								<img
-									src="all-course-img/icons8-right-arrow-50.png"
+									src={arrowIcon}
 									alt=""
 								/>
 							</div>
@@ -46,16 +61,16 @@ const PopularTags = () => {
 
 						<div className="react">
 							<img
-								src="all-course-img/icons8-notes-50.png"
+								src={nodeImg}
 								alt=""
 							/>
 							<div className="text">
 								<h6>Notjs</h6>
-								<p>Photos</p>
+								<p>Posts</p>
 							</div>
 							<div className="arrow-icon">
 								<img
-									src="all-course-img/icons8-right-arrow-50.png"
+									src={arrowIcon}
 									alt=""
 								/>
 							</div>
@@ -63,16 +78,16 @@ const PopularTags = () => {
 
 						<div className="react">
 							<img
-								src="all-course-img/icons8-es-file-explorer-50.png"
+								src={es6Img}
 								alt=""
 							/>
 							<div className="text">
-								<h6>ecmascript</h6>
-								<p>Photos</p>
+								<h6>ES6</h6>
+								<p>Posts</p>
 							</div>
 							<div className="arrow-icon">
 								<img
-									src="all-course-img/icons8-right-arrow-50.png"
+									src={arrowIcon}
 									alt=""
 								/>
 							</div>
@@ -80,16 +95,16 @@ const PopularTags = () => {
 
 						<div className="react">
 							<img
-								src="all-course-img/icons8-html-50.png"
+								src={htmlImg}
 								alt=""
 							/>
 							<div className="text">
-								<h6>html</h6>
-								<p>Photos</p>
+								<h6>HTML</h6>
+								<p>Posts</p>
 							</div>
 							<div className="arrow-icon">
 								<img
-									src="all-course-img/icons8-right-arrow-50.png"
+									src={arrowIcon}
 									alt=""
 								/>
 							</div>
@@ -97,16 +112,16 @@ const PopularTags = () => {
 
 						<div className="react">
 							<img
-								src="all-course-img/icons8-css-50.png"
+								src={cssImg}
 								alt=""
 							/>
 							<div className="text">
-								<h6>idea</h6>
-								<p>Photos</p>
+								<h6>CSS</h6>
+								<p>Posts</p>
 							</div>
 							<div className="arrow-icon">
 								<img
-									src="all-course-img/icons8-right-arrow-50.png"
+									src={arrowIcon}
 									alt=""
 								/>
 							</div>
@@ -114,10 +129,11 @@ const PopularTags = () => {
 
 						<div className="popular-tag">
 							<img
-								src="all-course-img/icons8-tag-50.png"
+								src={tagIcon}
 								alt=""
+                                className='mx-auto'
 							/>
-							<h3>popular tag</h3>
+							<h3 className='capitalize'>popular tag</h3>
 						</div>
 					</div>
 				</div>
