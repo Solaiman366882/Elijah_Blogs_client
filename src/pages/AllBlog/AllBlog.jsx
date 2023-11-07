@@ -92,6 +92,12 @@ const AllBlog = () => {
 						</button>
 						<button
 							className="btn"
+							onClick={() => handleSearchByCategory("mongodb")}
+						>
+							MongoDB
+						</button>
+						<button
+							className="btn"
 							onClick={() => handleSearchByCategory("expressjs")}
 						>
 							ExpressJs

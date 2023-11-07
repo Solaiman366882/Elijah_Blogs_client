@@ -84,6 +84,7 @@ const AddBlog = () => {
 									<option value="nodejs">NodeJS</option>
 									<option value="es6">ES6</option>
 									<option value="expressjs">ExpressJs</option>
+									<option value="mongodb">MongoDB</option>
 								</select>
 							</div>
 

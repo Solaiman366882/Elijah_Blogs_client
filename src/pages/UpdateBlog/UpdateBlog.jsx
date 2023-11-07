@@ -93,17 +93,15 @@ const UpdateBlog = () => {
 							</div>
 							<div className="single-input">
 								<select name="category" defaultValue={category}>
-									<option value="javascript">
+								<option value="javascript">
 										JavaScript
 									</option>
-									<option value="php">PHP</option>
 									<option value="html">HTML</option>
 									<option value="css">CSS</option>
 									<option value="react">React</option>
 									<option value="nodejs">NodeJS</option>
 									<option value="es6">ES6</option>
 									<option value="expressjs">ExpressJs</option>
-									<option value="nextjs">NextJs</option>
 									<option value="mongodb">MongoDB</option>
 								</select>
 							</div>
