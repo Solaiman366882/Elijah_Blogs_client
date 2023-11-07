@@ -1,0 +1,36 @@
+.single-comment {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.single-comment .owner-img {
+    width: 60px;
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.single-comment .owner-img img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+.single-comment h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--heading_color);
+}
+.single-comment p {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--text_color);
+    text-transform: capitalize;
+}

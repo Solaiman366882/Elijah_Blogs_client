@@ -7,11 +7,15 @@ import sendIcon from "../../assets/images/send.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import Comment from "../../component/Comment/Comment";
 
 const BlogDetails = () => {
-	let [commentsValue, setCommentsValue] = useState("");
+	const [comments, setComments] = useState([]);
+	const [commentsValue, setCommentsValue] = useState("");
 	const { id } = useParams();
 	const { user } = useContext(AuthContext);
+    
+    //data fetching for blog
 	const { data: blog, isPending } = useQuery({
 		queryKey: ["singleBlog"],
 		queryFn: async () => {
@@ -19,6 +23,20 @@ const BlogDetails = () => {
 			return res.data;
 		},
 	});
+
+    //data fetching for comments
+	const { isPending: commentLoading } = useQuery({
+		queryKey: ["comment"],
+		queryFn: async () => {
+			const res = await axios.get(
+				`http://localhost:5000/comments?blog_id=${id}`
+			);
+			setComments(res.data);
+			return res.data;
+		},
+	});
+
+    //destruct blog data
 	const {
 		title,
 		blogImg,
@@ -28,23 +46,24 @@ const BlogDetails = () => {
 		blogOwner,
 		blogOwnerImg,
 		blogOwnerEmail,
-        _id
+		_id,
 	} = blog || {};
 
+    //get comments from input area
 	const handleCommentsValue = (e) => {
 		setCommentsValue(e.target.value);
 	};
 
-    //handle all make by user for specific blog
+	//handle all make by user for specific blog
 	const handleComments = () => {
 		const comment = commentsValue;
 		const commentedUser = user.displayName;
 		const commentedUserEmail = user.email;
 		const commentedUserImg = user.photoURL;
-        const blog_id = _id;
+		const blog_id = _id;
 		const newComment = {
 			comment,
-            blog_id,
+			blog_id,
 			commentedUser,
 			commentedUserEmail,
 			commentedUserImg,
@@ -56,21 +75,28 @@ const BlogDetails = () => {
 				title: "Oops...",
 				text: "You cant comment on your own blog",
 			});
-		}
-        else{
-            axios
-			.post("http://localhost:5000/blogs", newComment )
-			.then((data) => {
-				// console.log(data.data);
-				const result = data.data;
-				if (result?.insertedId) {
-                    toast.success('Successfully commented!')
-                    
-				}
-			})
-			.catch((err) => console.log(err));
         }
+		else if (comment == '') {
+			return Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: "Write something and then make comment",
+			});
+		} else {
+			axios
+				.post("http://localhost:5000/comments", newComment)
+				.then((data) => {
+					// console.log(data.data);
+					const result = data.data;
+                    setComments([newComment,...comments]);
+					if (result?.insertedId) {
+						toast.success("Successfully commented!");
+					}
+				})
+				.catch((err) => console.log(err));
+		}
 	};
+    //if pending  it will show skeleton
 	if (isPending) {
 		return "Loading";
 	}
@@ -107,10 +133,27 @@ const BlogDetails = () => {
 					</div>
 				</div>
 				<div className="blog-comment-area">
-					<div className="blog-comments"></div>
+					<div className="blog-comments py-7">
+						{commentLoading ? (
+							<h1>comments is loading</h1>
+						) : (
+							<div className="comments-area">
+								{comments.length > 0 ? (
+									<div className="comment-collection">
+										{
+                                            comments?.map(singleComment => <Comment key={singleComment._id} singleComment={singleComment}></Comment> )
+                                        }
+									</div>
+								) : (
+									<h2> No comments made yet</h2>
+								)}
+							</div>
+						)}
+					</div>
 					<div className="blog-make-comment max-w-3xl mx-auto">
 						<textarea
 							onChange={handleCommentsValue}
+                            placeholder="Make Your Comment Here..."
 							name="comment"
 							id="comment"
 							cols="30"
