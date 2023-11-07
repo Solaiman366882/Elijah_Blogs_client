@@ -1,0 +1,76 @@
+
+.popular-tag-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 80px 0;
+  }
+  
+  
+  .popular-tag {
+    text-align: center;
+    width: 190px;
+    background: #d0d0d0;
+  }
+  
+  
+  .popular-tag img {
+    width: 40px;
+  }
+  
+  
+  .popular-tag h3 {
+    font-size: 25px;
+  }
+  
+  .react {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    background: #d0d0d0;
+  }
+  
+  .react:hover .text p {
+    color: red;
+  }
+  
+  
+  .react img {
+    width: 50px;
+  }
+  
+  .react .text h6 {
+    font-size: 25px;
+    color: #000;
+  }
+  
+  .react .text p {
+    font-size: 20px;
+    color: #000;
+  }
+  
+  .arrow-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #695454;
+    padding: 5px;
+  }
+  
+  
+  .arrow-icon img {
+    width: 100%;
+  }
+  
+  
+  .react,.popular-tag {
+    min-height: 118px;
+    padding: 20px;
+    border-radius: 20px;
+  }
