@@ -2,12 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./BlogDetails.css";
-import { useState } from "react";
-import sendIcon from '../../assets/images/send.png'
+import { useContext, useState } from "react";
+import sendIcon from "../../assets/images/send.png";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const BlogDetails = () => {
-	const [commentsValue, setCommentsValue] = useState("");
+	let [commentsValue, setCommentsValue] = useState("");
 	const { id } = useParams();
+	const { user } = useContext(AuthContext);
 	const { data: blog, isPending } = useQuery({
 		queryKey: ["singleBlog"],
 		queryFn: async () => {
@@ -23,16 +27,50 @@ const BlogDetails = () => {
 		description,
 		blogOwner,
 		blogOwnerImg,
+		blogOwnerEmail,
+        _id
 	} = blog || {};
 
 	const handleCommentsValue = (e) => {
 		setCommentsValue(e.target.value);
 	};
-    const handleComments = () {
-        let comments = commentsValue;
-        let user
 
-    }
+    //handle all make by user for specific blog
+	const handleComments = () => {
+		const comment = commentsValue;
+		const commentedUser = user.displayName;
+		const commentedUserEmail = user.email;
+		const commentedUserImg = user.photoURL;
+        const blog_id = _id;
+		const newComment = {
+			comment,
+            blog_id,
+			commentedUser,
+			commentedUserEmail,
+			commentedUserImg,
+		};
+
+		if (blogOwnerEmail === commentedUserEmail) {
+			return Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: "You cant comment on your own blog",
+			});
+		}
+        else{
+            axios
+			.post("http://localhost:5000/blogs", newComment )
+			.then((data) => {
+				// console.log(data.data);
+				const result = data.data;
+				if (result?.insertedId) {
+                    toast.success('Successfully commented!')
+                    
+				}
+			})
+			.catch((err) => console.log(err));
+        }
+	};
 	if (isPending) {
 		return "Loading";
 	}
@@ -70,7 +108,7 @@ const BlogDetails = () => {
 				</div>
 				<div className="blog-comment-area">
 					<div className="blog-comments"></div>
-					<div className="blog-make-comment">
+					<div className="blog-make-comment max-w-3xl mx-auto">
 						<textarea
 							onChange={handleCommentsValue}
 							name="comment"
@@ -78,9 +116,11 @@ const BlogDetails = () => {
 							cols="30"
 							rows="3"
 						></textarea>
-                        <div className="send-btn">
-                            <button onClick={}><img src={sendIcon} alt="" /></button>
-                        </div>
+						<div className="send-btn">
+							<button onClick={handleComments}>
+								<img src={sendIcon} alt="" />
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
