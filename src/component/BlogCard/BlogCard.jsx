@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import "./BlogCard.css";
+import { Link } from "react-router-dom";
 
 const BlogCard = ({ blog }) => {
 	const {
@@ -9,6 +10,7 @@ const BlogCard = ({ blog }) => {
 		shortDescription,
 		blogOwner,
 		blogOwnerImg,
+		_id
 	} = blog || {};
 
 	return (
@@ -36,7 +38,7 @@ const BlogCard = ({ blog }) => {
 						<h4>{blogOwner}</h4>
 					</div>
 					<div className="btn-area flex justify-between items-center">
-						<button className="btn">details</button>
+						<Link to={`/blog/${_id}`}><button className="btn">details</button></Link>
 						<button className="btn">Add to wishlist</button>
 					</div>
 				</div>

@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
                 element:<Wishlist></Wishlist>
             },
             {
-                path:'/blogDetails',
+                path:'/blog/:id',
                 element:<BlogDetails></BlogDetails>
             },
             {

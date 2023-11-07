@@ -1,73 +1,91 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import "./BlogDetails.css";
+import { useState } from "react";
+import sendIcon from '../../assets/images/send.png'
 
 const BlogDetails = () => {
-    return (
-        <div className="max-w-screen-xl mx-auto px-5 py-10">
-        <div className="add-blog-area">
-            <div className="login-title">
-                <h2 className="text-6xl">Create a New Blog </h2>
-            </div>
-            <div className="blog-form-area max-w-screen-lg mx-auto p-5 md:p-10 ">
-                <form>
-                    <div className="form-area w-full grid grid-cols-2 gap-7">
-                        <div className="single-input">
-                            <input
-                                type="text"
-                                name="title"
-                                placeholder="Enter your blog title"
-                            />
+	const [commentsValue, setCommentsValue] = useState("");
+	const { id } = useParams();
+	const { data: blog, isPending } = useQuery({
+		queryKey: ["singleBlog"],
+		queryFn: async () => {
+			const res = await axios.get(`http://localhost:5000/blog/${id}`);
+			return res.data;
+		},
+	});
+	const {
+		title,
+		blogImg,
+		category,
+		shortDescription,
+		description,
+		blogOwner,
+		blogOwnerImg,
+	} = blog || {};
+
+	const handleCommentsValue = (e) => {
+		setCommentsValue(e.target.value);
+	};
+    const handleComments = () {
+        let comments = commentsValue;
+        let user
+
+    }
+	if (isPending) {
+		return "Loading";
+	}
+	return (
+		<div className="max-w-screen-xl mx-auto px-5 py-10">
+			<div className="blog-details-section">
+				<div className="login-title">
+					<h2 className="text-6xl">{title}</h2>
+				</div>
+				<div className="blog-details-area my-10 ">
+					<div className="blog-info-area grid grid-cols-2 gap-6 items-center">
+						<div className="blog-left-img">
+							<img src={blogImg} alt="" />
+							<div className="blog-owner-info flex justify-between items-center">
+								<div className="blog-owner">
+									<div className="img-wrap">
+										<img src={blogOwnerImg} alt="" />
+									</div>
+									<h4>{blogOwner}</h4>
+								</div>
+								<div className="category-area">
+									<button className="cat-btn">
+										{category}
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="blog-right-text">
+							<div className="blog-info">
+								<h4>{shortDescription}</h4>
+								<p>{description}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="blog-comment-area">
+					<div className="blog-comments"></div>
+					<div className="blog-make-comment">
+						<textarea
+							onChange={handleCommentsValue}
+							name="comment"
+							id="comment"
+							cols="30"
+							rows="3"
+						></textarea>
+                        <div className="send-btn">
+                            <button onClick={}><img src={sendIcon} alt="" /></button>
                         </div>
-                        <div className="single-input">
-                            <input
-                                type="text"
-                                name="blogImg"
-                                placeholder="Enter a blog image url"
-                            />
-                        </div>
-                        <div className="single-input">
-                            <input
-                                type="text"
-                                name="shortDescription"
-                                placeholder="Please Provide a Short Description"
-                            />
-                        </div>
-                        <div className="single-input">
-                            <select name="category">
-                                <option value="javascript">
-                                    JavaScript
-                                </option>
-                                <option value="php">PHP</option>
-                                <option value="html">HTML</option>
-                                <option value="css">CSS</option>
-                                <option value="react">React</option>
-                                <option value="nodejs">NodeJS</option>
-                                <option value="es6">ES6</option>
-                                <option value="expressjs">ExpressJs</option>
-                                <option value="nextjs">NextJs</option>
-                                <option value="mongodb">MongoDB</option>
-                            </select>
-                        </div>
-                        
-                        <div className="single-input col-span-2">
-                            <input
-                                type="text"
-                                name="Description"
-                                placeholder="Write Details here..."
-                                className="h-40"
-                            />
-                        </div>
-                        <div className="single-input col-span-2">
-                            <input
-                                type="submit"
-                                value="Submit"
-                                className="btn"
-                            />
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    );
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default BlogDetails;
