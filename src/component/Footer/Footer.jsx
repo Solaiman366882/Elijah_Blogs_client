@@ -10,7 +10,7 @@ const Footer = () => {
 		<div>
 			<div className="footer footer-section mt-8">
 				<div className="max-w-screen-xl mx-auto px-5">
-					<div className="grid grid-cols-5 gap-5">
+					<div className="grid lg:grid-cols-5 gap-5">
 						<div className="col-span-2">
 							<div className="footer-content">
 								<div className="footer-logo">

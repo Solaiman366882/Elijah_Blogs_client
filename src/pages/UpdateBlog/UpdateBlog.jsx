@@ -66,7 +66,7 @@ const UpdateBlog = () => {
 				</div>
 				<div className="blog-form-area max-w-screen-lg mx-auto p-5 md:p-10 ">
 					<form onSubmit={handleBlogUpdate}>
-						<div className="form-area w-full grid grid-cols-2 gap-7">
+						<div className="form-area w-full grid grid-cols-1 md:grid-cols-2 gap-7">
 							<div className="single-input">
 								<input
 									type="text"
@@ -106,7 +106,7 @@ const UpdateBlog = () => {
 								</select>
 							</div>
 
-							<div className="single-input col-span-2">
+							<div className="single-input md:col-span-2">
 								<input
 									type="text"
 									name="description"
@@ -115,7 +115,7 @@ const UpdateBlog = () => {
                                     defaultValue={description}
 								/>
 							</div>
-							<div className="single-input col-span-2">
+							<div className="single-input md:col-span-2">
 								<input
 									type="submit"
 									value="Submit"

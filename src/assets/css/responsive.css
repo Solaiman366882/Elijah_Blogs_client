@@ -1,0 +1,131 @@
+/*
+====================================
+Medium Screen - Others
+====================================
+*/
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+
+    .text h1 {
+        font-size: 28px;;
+    }
+
+    .text p {
+        font-size: 13px;
+        margin: 16px 0;
+    }
+
+    .text a {
+        font-size: 15px;
+        background: linear-gradient(-270deg ,#FF8536,#FF0502);
+        padding: 8px;
+    }
+
+    .txt {
+        height: 58px;
+        width: 180px;
+        padding: 10px;
+        transform: translate(32%,72%);
+    }
+
+
+}
+
+/*
+====================================
+Small Screen - Tablate
+====================================
+*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    .footer-logo {
+        width: 221px;
+    }
+
+    .footer-text p {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+
+    .social-icon ul li a img {
+        width: 23px;
+        height: 23px;
+        transition: 1s;
+    }
+
+    .feature h4 {
+        margin-top: 40px;
+    }
+
+    .footer-menu ul li a {
+        padding: 10px 0;
+    }
+
+}
+
+/*
+====================================
+Xtra Small Screen - Small Mobile
+====================================
+*/
+@media screen and (max-width: 767px) {
+    section.banner-section::after {
+        width: 180%;
+    }
+    .title-section h2 {
+        font-size: 30px;
+    }
+    .title-section h2::after {
+        font-size: 45px;
+        letter-spacing: 16px;
+    }
+    .title-section p {
+        font-size: 16px;
+    }
+
+    .footer-logo {
+        width: 221px;
+    }
+
+    .footer-text p {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+
+    .social-icon ul li a img {
+        width: 23px;
+        height: 23px;
+        transition: 1s;
+    }
+
+    .feature h4 {
+        margin-top: 40px;
+    }
+
+    .footer-menu ul li a {
+        padding: 10px 0;
+    }
+
+
+    /* all tag*/
+
+    .react {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: #d0d0d0;
+    }
+
+
+    /* card */
+
+
+
+    .card-area {
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap:wrap ;
+    }
+}

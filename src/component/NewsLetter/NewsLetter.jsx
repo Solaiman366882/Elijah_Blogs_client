@@ -25,7 +25,7 @@ const NewsLetter = () => {
 
 	return (
 		<div className="newsletter-section">
-			<div className="flex justify-between px-8 py-14 gap-8">
+			<div className="flex flex-col lg:flex-col justify-between px-8 py-14 gap-8">
 				<div className="news-title flex-1">
 					<h2 className='mb-8'>Subscribe to Elijah newsletter  and stay updated.</h2>
 					<p>

@@ -30,3 +30,19 @@ section.banner-section::after {
     font-size: 65px;
     font-weight: 700;
 }
+@media screen and (max-width: 767px) {
+    section.banner-section::after {
+        width: 180%;
+    }
+    .hero-area h1 {
+        color: #fff;
+        font-size: 40px;
+        font-weight: 700;
+        text-align: center;
+    }
+    .hero-area h1 img{
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+}

@@ -11,7 +11,6 @@ const Header = () => {
 	const handleLogOut = () => {
 		logOut();
 	};
-
 	return (
 		<header className="p-3 shadow-xl">
 			<Navbar fluid rounded>
@@ -31,6 +30,7 @@ const Header = () => {
 										className="object-cover"
 										rounded
 									/>
+									//<img src={user.photoURL} />
 								}
 							>
 								<Dropdown.Header>

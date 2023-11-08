@@ -65,7 +65,7 @@ const PopularTags = () => {
 								alt=""
 							/>
 							<div className="text">
-								<h6>Notjs</h6>
+								<h6>NodeJs</h6>
 								<p>Posts</p>
 							</div>
 							<div className="arrow-icon">

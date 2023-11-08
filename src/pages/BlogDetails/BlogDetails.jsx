@@ -106,7 +106,7 @@ const BlogDetails = () => {
 					<h2 className="text-6xl">{title}</h2>
 				</div>
 				<div className="blog-details-area my-10 ">
-					<div className="blog-info-area grid grid-cols-2 gap-6 items-center">
+					<div className="blog-info-area grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
 						<div className="blog-left-img">
 							<img src={blogImg} alt="" />
 							<div className="blog-owner-info flex justify-between items-center">

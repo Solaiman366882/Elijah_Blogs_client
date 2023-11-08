@@ -5,7 +5,9 @@
     --white: #ffffff;
     --secondary-white:#e6d8d8;
 }
-
+*{
+    box-sizing: border-box
+}
 /* Google fonts Nunito */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700;800;900&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;0,1000;1,800&display=swap');
@@ -177,7 +179,7 @@ img{
 }
 .secondary-banner {
     height: 50vh;
-    background: url(../images/all-blog-banner2.jpg);
+    background: url(/src/assets/images/all-blog-banner2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -186,6 +188,7 @@ img{
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 .secondary-banner::after {
     position: absolute;

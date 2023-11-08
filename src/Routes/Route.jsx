@@ -9,6 +9,7 @@ import FeaturedBlog from "../pages/Featured/FeaturedBlog";
 import Wishlist from "../pages/Wishlist/Wishlist";
 import BlogDetails from "../pages/BlogDetails/BlogDetails";
 import UpdateBlog from "../pages/UpdateBlog/UpdateBlog";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/addBlog',
-                element:<AddBlog></AddBlog>
+                element:<PrivateRoute><AddBlog></AddBlog></PrivateRoute>
             },
             {
                 path:'/allBlog',
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/wishlist',
-                element:<Wishlist></Wishlist>
+                element:<PrivateRoute><Wishlist></Wishlist></PrivateRoute>
             },
             {
                 path:'/blog/:id',
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/updateBlog/:id',
-                element:<UpdateBlog></UpdateBlog>
+                element:<PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>
             }
         ]
     }

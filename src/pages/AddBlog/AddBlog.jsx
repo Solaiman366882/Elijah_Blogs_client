@@ -47,11 +47,11 @@ const AddBlog = () => {
 		<div className="max-w-screen-xl mx-auto px-5 py-10">
 			<div className="add-blog-area">
 				<div className="login-title">
-					<h2 className="text-6xl">Create a New Blog </h2>
+					<h2 className="text-3xl md:text-6xl">Create a New Blog </h2>
 				</div>
 				<div className="blog-form-area max-w-screen-lg mx-auto p-5 md:p-10 ">
 					<form onSubmit={handleAddBlog}>
-						<div className="form-area w-full grid grid-cols-2 gap-7">
+						<div className="form-area w-full grid grid-cols-1 md:grid-cols-2 gap-7">
 							<div className="single-input">
 								<input
 									type="text"
@@ -88,7 +88,7 @@ const AddBlog = () => {
 								</select>
 							</div>
 
-							<div className="single-input col-span-2">
+							<div className="single-input md:col-span-2">
 								<input
 									type="text"
 									name="description"
@@ -96,7 +96,7 @@ const AddBlog = () => {
 									className="h-40"
 								/>
 							</div>
-							<div className="single-input col-span-2">
+							<div className="single-input md:col-span-2">
 								<input
 									type="submit"
 									value="Submit"

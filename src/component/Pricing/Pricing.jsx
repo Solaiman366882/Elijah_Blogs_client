@@ -11,7 +11,7 @@ const Pricing = () => {
 					</p>
 				</div>
 				<div className="max-w-screen-lg px-5 mx-auto">
-					<div className="card-area grid grid-cols-3 gap-5">
+					<div className="card-area grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 						<div className="card">
 							<div>
 								<h6>free</h6>

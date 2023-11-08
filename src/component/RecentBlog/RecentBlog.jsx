@@ -46,14 +46,14 @@ const RecentBlog = () => {
 
 	return (
 		<section className="recent-blog-section py-12">
-			<div className=" max-w-screen-xl mx-auto px-5">
+			<div className=" max-w-screen-xl mx-auto ">
 				<div className="title-section">
 					<h2>recent blog</h2>
 					<p>
 						browse recently added blog, and explore something new.
 					</p>
 				</div>
-				<div className="recent-blog-area mt-8 grid grid-cols-3 gap-5 lg:gap-7">
+				<div className="recent-blog-area mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
 					{recentBlog?.map((blog) => (
 						<BlogCard key={blog._id} blog={blog}></BlogCard>
 					))}

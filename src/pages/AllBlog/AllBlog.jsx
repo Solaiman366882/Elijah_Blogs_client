@@ -38,13 +38,15 @@ const AllBlog = () => {
 		<div>
 			<section className="all-blog-page">
 				<div className="secondary-banner">
-                    <div className="search-area max-w-lg mx-auto relative">
-                        <form onSubmit={handleSearch}>
+                    <div className="px-4 w-full">
+					<div className="search-area max-w-lg mx-auto w-full relative">
+                        <form onSubmit={handleSearch} >
                             <input type="search" placeholder="Search Blogs" name="search" />
                             <button><img src={searchIcon} alt="" /></button>
                         </form>
 
                     </div>
+					</div>
 					<div className="banner-title">
 						<h2>All Blogs</h2>
 					</div>
@@ -122,7 +124,7 @@ const AllBlog = () => {
 							</div>
 						)
 					) : (
-						<div className="py-8 grid grid-cols-3 gap-5 lg:gap-7">
+						<div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
 							{blogs?.map((blog) => (
 								<BlogCard key={blog._id} blog={blog}></BlogCard>
 							))}
