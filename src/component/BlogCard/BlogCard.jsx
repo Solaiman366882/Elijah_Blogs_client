@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { motion } from "framer-motion";
 
 const BlogCard = ({ blog }) => {
 	const { user } = useContext(AuthContext);
@@ -52,10 +54,17 @@ const BlogCard = ({ blog }) => {
 
 	return (
 		<div>
-			<div className="blog-card">
+			<motion.div   initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }} className="blog-card">
 				<div className="card-header">
 					<div>
-						<img src={blogImg} alt="" />
+						<PhotoProvider>
+							<PhotoView src={blogImg}>
+								<img src={blogImg} alt="" />
+							</PhotoView>
+						</PhotoProvider>
+						{/* <img src={blogImg} alt="" /> */}
 					</div>
 					<div className="category-area">
 						<button>{category}</button>
@@ -83,7 +92,7 @@ const BlogCard = ({ blog }) => {
 						</button>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	);
 };

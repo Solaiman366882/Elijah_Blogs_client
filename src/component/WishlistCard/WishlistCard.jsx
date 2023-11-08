@@ -45,8 +45,8 @@ const WishlistCard = ({ blog,blogs,setBlogs }) => {
 		});
 	};
 	return (
-		<div className="wished-blog-card flex gap-5">
-			<div className="card-img w-64">
+		<div className="wished-blog-card flex flex-col lg:flex-row gap-5">
+			<div className="card-img lg:w-64 w-full">
 				<img src={blogImg} alt="" />
 			</div>
 			<div className="wished-blog-info">

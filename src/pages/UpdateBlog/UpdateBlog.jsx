@@ -62,7 +62,7 @@ const UpdateBlog = () => {
 		<div className="max-w-screen-xl mx-auto px-5 py-10">
 			<div className="add-blog-area">
 				<div className="login-title">
-					<h2 className="text-6xl">Update Blog </h2>
+					<h2 className="text-3xl md:text-6xl">Update Blog </h2>
 				</div>
 				<div className="blog-form-area max-w-screen-lg mx-auto p-5 md:p-10 ">
 					<form onSubmit={handleBlogUpdate}>

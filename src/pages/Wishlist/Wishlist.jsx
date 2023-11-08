@@ -27,14 +27,14 @@ const Wishlist = () => {
 			<div className="max-w-screen-xl mx-auto px-5">
 				<div className="secondary-banner">
 					<div className="search-area max-w-lg mx-auto relative">
-                        <h2 className="text-white font-bold text-3xl">Hello,{user.displayName}</h2>
+                        <h2 className="text-white font-bold text-xl md:text-3xl">Hello,{user.displayName}</h2>
                     </div>
 					<div className="banner-title">
 						<h2>Wishlists</h2>
 					</div>
 				</div>
 				{blogs.length > 0 ? (
-					<div className="wishlist-card-area grid grid-cols-2 gap-5 py-12">
+					<div className="wishlist-card-area grid grid-cols-1 md:grid-cols-2 gap-5 py-12">
 						{blogs?.map((blog) => (
 							<WishlistCard
 								key={blog._id}

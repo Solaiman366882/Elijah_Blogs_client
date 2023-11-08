@@ -8,6 +8,7 @@ import { router } from "./Routes/Route";
 import AuthProvider from "./Provider/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import 'react-photo-view/dist/react-photo-view.css';
 
 const queryClient = new QueryClient();
 
