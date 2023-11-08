@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Spinner } from "flowbite-react";
 import BlogCard from "../BlogCard/BlogCard";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import RecentBlogSkeleton from "./RecentBlogSkeleton";
 
 const RecentBlog = () => {
 	const [recentBlog, setRecentBlog] = useState([]);
@@ -11,7 +11,7 @@ const RecentBlog = () => {
 	const { isPending, isError, error } = useQuery({
 		queryKey: ["blogs"],
 		queryFn: async () => {
-			const res = await axios.get("http://localhost:5000/blogs");
+			const res = await axios.get("https://b8a11-server-side-solaiman366882.vercel.app/blogs");
 			const blogs = res.data;
 			for (let i = 0; i < blogs.length; i++) {
 				for (let j = i + 1; j < blogs.length; j++) {
@@ -31,7 +31,7 @@ const RecentBlog = () => {
 	});
 
 	if (isPending) {
-		return <Spinner aria-label="Extra large spinner example" size="xl" />;
+		return <RecentBlogSkeleton></RecentBlogSkeleton>;
 	}
 	if (isError) {
 		console.log("error message:", error);

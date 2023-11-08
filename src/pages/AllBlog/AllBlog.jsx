@@ -3,6 +3,7 @@ import axios from "axios";
 import BlogCard from "../../component/BlogCard/BlogCard";
 import { useState } from "react";
 import searchIcon from "../../assets/images/searchIcon.png";
+import AllBlogsSkeleton from "./AllBlogsSkeleton";
 
 const AllBlog = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -11,7 +12,7 @@ const AllBlog = () => {
 	const { isPending } = useQuery({
 		queryKey: ["blogs"],
 		queryFn: async () => {
-			const res = await axios.get("http://localhost:5000/blogs");
+			const res = await axios.get("https://b8a11-server-side-solaiman366882.vercel.app/blogs");
 			setBlogs(res.data);
 			return res.data;
 		},
@@ -31,7 +32,7 @@ const AllBlog = () => {
         setIsSearched(true);
     }
 	if (isPending) {
-		return "Pending";
+		return <AllBlogsSkeleton></AllBlogsSkeleton>;
 	}
 
 	return (

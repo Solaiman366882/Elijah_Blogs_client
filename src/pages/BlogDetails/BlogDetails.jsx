@@ -8,6 +8,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import Comment from "../../component/Comment/Comment";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import BlogDetailsSkeleton from "./BlogDetailsSkeleton";
 
 const BlogDetails = () => {
 	const [comments, setComments] = useState([]);
@@ -19,7 +21,9 @@ const BlogDetails = () => {
 	const { data: blog, isPending } = useQuery({
 		queryKey: ["singleBlog"],
 		queryFn: async () => {
-			const res = await axios.get(`http://localhost:5000/blog/${id}`);
+			const res = await axios.get(
+				`https://b8a11-server-side-solaiman366882.vercel.app/blog/${id}`
+			);
 			return res.data;
 		},
 	});
@@ -29,7 +33,7 @@ const BlogDetails = () => {
 		queryKey: ["comment"],
 		queryFn: async () => {
 			const res = await axios.get(
-				`http://localhost:5000/comments?blog_id=${id}`
+				`https://b8a11-server-side-solaiman366882.vercel.app/comments?blog_id=${id}`
 			);
 			setComments(res.data);
 			return res.data;
@@ -83,7 +87,10 @@ const BlogDetails = () => {
 			});
 		} else {
 			axios
-				.post("http://localhost:5000/comments", newComment)
+				.post(
+					"https://b8a11-server-side-solaiman366882.vercel.app/comments",
+					newComment
+				)
 				.then((data) => {
 					// console.log(data.data);
 					const result = data.data;
@@ -97,7 +104,7 @@ const BlogDetails = () => {
 	};
 	//if pending  it will show skeleton
 	if (isPending) {
-		return "Loading";
+		return <BlogDetailsSkeleton></BlogDetailsSkeleton>;
 	}
 	return (
 		<div className="max-w-screen-xl mx-auto px-5 py-10">
@@ -108,7 +115,12 @@ const BlogDetails = () => {
 				<div className="blog-details-area my-10 ">
 					<div className="blog-info-area grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
 						<div className="blog-left-img">
-							<img src={blogImg} alt="" />
+							{/* <img src={blogImg} alt="" /> */}
+							<PhotoProvider>
+								<PhotoView src={blogImg}>
+									<img src={blogImg} alt="" />
+								</PhotoView>
+							</PhotoProvider>
 							<div className="blog-owner-info flex justify-between items-center">
 								<div className="blog-owner">
 									<div className="img-wrap">

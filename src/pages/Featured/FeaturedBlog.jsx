@@ -10,7 +10,7 @@ const FeaturedBlog = () => {
 	const { isPending } = useQuery({
 		queryKey: ["blogs"],
 		queryFn: async () => {
-			const res = await axios.get("http://localhost:5000/blogs");
+			const res = await axios.get("https://b8a11-server-side-solaiman366882.vercel.app/blogs");
 			const blogs = res.data;
 			for (let i = 0; i < blogs.length; i++) {
 				for (let j = i + 1; j < blogs.length; j++) {
@@ -52,11 +52,11 @@ const FeaturedBlog = () => {
 
 	return (
 		<div className="featured-blog-page">
-			<div className="max-w-screen-xl mx-auto px-auto">
+			<div className="max-w-screen-xl mx-auto px-5">
 				<div className="login-title mt-10">
-					<h2 className="text-6xl">Featured Blog</h2>
+					<h2 className="text-3xl md:text-6xl">Featured Blog</h2>
 				</div>
-				<div className="table-area">
+				<div className="table-area ">
 					<Table
 						columns={[
 							{

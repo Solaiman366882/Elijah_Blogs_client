@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import WishlistCard from "../../component/WishlistCard/WishlistCard";
+import WishlistSkeleton from "./WishlistSkeleton";
 
 const Wishlist = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -11,7 +12,7 @@ const Wishlist = () => {
 		queryKey: ["wishlist"],
 		queryFn: async () => {
 			const res = await axios
-				.get(`http://localhost:5000/wishlist?email=${user.email}`)
+				.get(`https://b8a11-server-side-solaiman366882.vercel.app/wishlist?email=${user.email}`)
 				.then();
 			setBlogs(res.data);
             return res.data;
@@ -19,7 +20,7 @@ const Wishlist = () => {
 	});
 
 	if (isPending) {
-		return <h1>loading</h1>;
+		return <WishlistSkeleton></WishlistSkeleton>;
 	}
 
 	return (

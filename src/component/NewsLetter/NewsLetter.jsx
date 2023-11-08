@@ -11,7 +11,7 @@ const NewsLetter = () => {
 		const email = form.email.value;
 		console.log(name,email);
 		const newsLetter = {name,email}
-		axios.post('http://localhost:5000/newsLetter',newsLetter)
+		axios.post('https://b8a11-server-side-solaiman366882.vercel.app/newsLetter',newsLetter)
 		.then(data => {
 			const result = data.data;
 			if (result?.insertedId) {

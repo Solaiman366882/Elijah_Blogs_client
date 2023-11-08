@@ -30,7 +30,7 @@ const AddBlog = () => {
 		};
 		//send blog data to database
 		axios
-			.post("http://localhost:5000/blogs",  newBlog )
+			.post("https://b8a11-server-side-solaiman366882.vercel.app/blogs",  newBlog )
 			.then((data) => {
 				// console.log(data.data);
 				const result = data.data;

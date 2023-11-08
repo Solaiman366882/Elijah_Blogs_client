@@ -9,7 +9,7 @@ const UpdateBlog = () => {
 	const { data: blog } = useQuery({
 		queryKey: ["blog"],
 		queryFn: async () => {
-			const res = axios.get(`http://localhost:5000/blog/${id}`);
+			const res = axios.get(`https://b8a11-server-side-solaiman366882.vercel.app/blog/${id}`);
 			return (await res).data;
 		},
 	});
@@ -40,7 +40,7 @@ const UpdateBlog = () => {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                axios.put(`http://localhost:5000/blog/${id}`,updatedBlog)
+                axios.put(`https://b8a11-server-side-solaiman366882.vercel.app/blog/${id}`,updatedBlog)
                 .then(data => {
                     if(data.data.modifiedCount > 0)
                     {

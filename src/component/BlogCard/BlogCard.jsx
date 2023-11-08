@@ -32,7 +32,10 @@ const BlogCard = ({ blog }) => {
 			blog_id: _id,
 		};
 		axios
-			.post("http://localhost:5000/wishlist", wishlistBlog)
+			.post(
+				"https://b8a11-server-side-solaiman366882.vercel.app/wishlist",
+				wishlistBlog
+			)
 			.then((data) => {
 				const result = data.data;
 				if (result?.insertedId) {
@@ -54,9 +57,12 @@ const BlogCard = ({ blog }) => {
 
 	return (
 		<div>
-			<motion.div   initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }} className="blog-card">
+			<motion.div
+				initial={{ opacity: 0 }}
+				whileInView={{ opacity: 1 }}
+				viewport={{ once: true }}
+				className="blog-card"
+			>
 				<div className="card-header">
 					<div>
 						<PhotoProvider>

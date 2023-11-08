@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import "./WishlistCard.css";
 import Swal from "sweetalert2";
 import axios from "axios";
-const WishlistCard = ({ blog,blogs,setBlogs }) => {
+import { PhotoProvider, PhotoView } from "react-photo-view";
+const WishlistCard = ({ blog, blogs, setBlogs }) => {
 	const {
 		title,
 		category,
@@ -11,7 +12,7 @@ const WishlistCard = ({ blog,blogs,setBlogs }) => {
 		blogImg,
 		// wishlistOwner,
 		blog_id,
-        _id
+		_id,
 	} = blog || {};
 
 	const handleRemoveWishlist = () => {
@@ -24,21 +25,24 @@ const WishlistCard = ({ blog,blogs,setBlogs }) => {
 		}).then((result) => {
 			/* Read more about isConfirmed, isDenied below */
 			if (result.isConfirmed) {
-				
-                axios.delete(`http://localhost:5000/wishlist/${_id}`)
-                .then(data => {
-                    const res = data.data;
-                    if(res.deletedCount > 0)
-                    {
-                        const remainingBlogs = blogs.filter(blogF => blogF._id !== _id);
-                        setBlogs(remainingBlogs);
-                        Swal.fire("Deleted!", "", "success");
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                    Swal.fire("could not delete", "", "error");
-                })
+				axios
+					.delete(
+						`https://b8a11-server-side-solaiman366882.vercel.app/wishlist/${_id}`
+					)
+					.then((data) => {
+						const res = data.data;
+						if (res.deletedCount > 0) {
+							const remainingBlogs = blogs.filter(
+								(blogF) => blogF._id !== _id
+							);
+							setBlogs(remainingBlogs);
+							Swal.fire("Deleted!", "", "success");
+						}
+					})
+					.catch((err) => {
+						console.log(err);
+						Swal.fire("could not delete", "", "error");
+					});
 			} else if (result.isDenied) {
 				Swal.fire("Delete Cancel", "", "info");
 			}
@@ -47,7 +51,12 @@ const WishlistCard = ({ blog,blogs,setBlogs }) => {
 	return (
 		<div className="wished-blog-card flex flex-col lg:flex-row gap-5">
 			<div className="card-img lg:w-64 w-full">
-				<img src={blogImg} alt="" />
+				{/* <img src={blogImg} alt="" /> */}
+				<PhotoProvider>
+					<PhotoView src={blogImg}>
+						<img src={blogImg} alt="" />
+					</PhotoView>
+				</PhotoProvider>
 			</div>
 			<div className="wished-blog-info">
 				<div className="category">
@@ -73,8 +82,8 @@ const WishlistCard = ({ blog,blogs,setBlogs }) => {
 };
 WishlistCard.propTypes = {
 	blog: PropTypes.object,
-    blogs:PropTypes.array,
-    setBlogs:PropTypes.func
+	blogs: PropTypes.array,
+	setBlogs: PropTypes.func,
 };
 
 export default WishlistCard;

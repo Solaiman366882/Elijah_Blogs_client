@@ -47,7 +47,12 @@ const Register = () => {
 				displayName: name,
 				photoURL: photo,
 			}).then(() => {
-				alert("user created successfully");
+				Swal.fire(
+					"Well Done",
+					"User Created Successfully",
+					"success"
+				);
+				navigate(location?.state ? location.state : "/");
 			});
 		});
 	};
