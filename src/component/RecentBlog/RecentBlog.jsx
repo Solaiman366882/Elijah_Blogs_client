@@ -2,13 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Spinner } from "flowbite-react";
 import BlogCard from "../BlogCard/BlogCard";
-// import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const RecentBlog = () => {
-	// const [recentBlog,setRecentBlog] = useState([]);
+	const [recentBlog, setRecentBlog] = useState([]);
 
 	const {
-		data: blogs,
 		isPending,
 		isError,
 		error,
@@ -16,27 +15,26 @@ const RecentBlog = () => {
 		queryKey: ["blogs"],
 		queryFn: async () => {
 			const res = await axios.get("http://localhost:5000/blogs");
+			const blogs = res.data;
+			for (let i = 0; i < blogs.length; i++) {
+				for (let j = i + 1; j < blogs.length; j++) {
+					const dateOfIElement = new Date(blogs[i].postingTime);
+					const dateOfJElement = new Date(blogs[j].postingTime);
+					if (
+						dateOfIElement <
+						dateOfJElement
+					) {
+						const temp = blogs[i];
+						blogs[i] = blogs[j];
+						blogs[j] = temp;
+					}
+				}
+			}
+			setRecentBlog(blogs.slice(0,6))
+
 			return res.data;
 		},
 	});
-	console.log("blogs before sorting", blogs);
-	// useEffect(() => {
-	//     // const sortedBlog = blogs.find().sort({ timestamp: -1 });
-	//     // const postDate =new Date(blogs[0].postingTime);
-	//     // const postDate2 =new Date(blogs[1].postingTime);
-	//     // const postDate3 =new Date(blogs[2].postingTime);
-	//     // console.log(postDate,postDate2,postDate3);
-	//    if(!isPending)
-	//    {
-	//     blogs.sort(function(a,b){
-	//         // Turn your strings into dates, and then subtract them
-	//         // to get a value that is either negative, positive, or zero.
-	//         return new Date(b.postingTime) - new Date(a.postingTime);
-	//       });
-
-	//     console.log('blogs after sorting',blogs);
-	//    }
-	// },[isPending])
 
 	if (isPending) {
 		return <Spinner aria-label="Extra large spinner example" size="xl" />;
@@ -56,7 +54,7 @@ const RecentBlog = () => {
 					</p>
 				</div>
 				<div className="recent-blog-area mt-8 grid grid-cols-3 gap-5 lg:gap-7">
-					{blogs?.map((blog) => (
+					{recentBlog?.map((blog) => (
 						<BlogCard key={blog._id} blog={blog}></BlogCard>
 					))}
 				</div>

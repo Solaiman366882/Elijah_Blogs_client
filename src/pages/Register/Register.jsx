@@ -1,11 +1,23 @@
 import { Label, TextInput } from "flowbite-react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
-	const {createUser} = useContext(AuthContext);
+	const { createUser, handleGoogleLogin } = useContext(AuthContext);
+	const location = useLocation();
+
+	const navigate = useNavigate();
+
+	const handleSocialLogin = (media) => {
+		media().then((result) => {
+			console.log(result);
+			Swal.fire("Good job!", "Successfully login with google", "success");
+			navigate(location?.state ? location.state : "/");
+		});
+	};
 	const handleRegister = (e) => {
 		e.preventDefault();
 		const form = e.target;
@@ -13,19 +25,31 @@ const Register = () => {
 		const email = form.email.value;
 		const password = form.password.value;
 		const photo = form.photo.value;
-		console.log(email, password, name,photo);
+		console.log(email, password, name, photo);
 
-		createUser(email,password)
-		.then(res => {
+		// reg expression for password validation
+		const validatePassword = (password) => {
+			const pattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(.{6,})$/;
+			return pattern.test(password);
+		};
+		//password validation condition
+		if (!validatePassword(password)) {
+			return Swal.fire(
+				"Invalid Password",
+				"Your password must have at least 6 character and uppercase letter and special character",
+				"error"
+			);
+		}
+
+		createUser(email, password).then((res) => {
 			const user = res.user;
-			updateProfile(user,{
-				displayName:name,
-				photoURL:photo
-			})
-			.then(() => {
-				alert('user created successfully');
-			})
-		})
+			updateProfile(user, {
+				displayName: name,
+				photoURL: photo,
+			}).then(() => {
+				alert("user created successfully");
+			});
+		});
 	};
 	return (
 		<div className="w-full min-h-[80vh] py-10 flex flex-col justify-center items-center">
@@ -85,6 +109,15 @@ const Register = () => {
 						/>
 					</div>
 					<button className="btn">Sign Up</button>
+					<div className="">
+						<button
+							type="button"
+							className="btn w-full"
+							onClick={() => handleSocialLogin(handleGoogleLogin)}
+						>
+							Google Login
+						</button>
+					</div>
 				</form>
 				<div className="text-center mt-5">
 					<p className="account-links">
