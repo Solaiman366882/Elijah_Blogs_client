@@ -2,6 +2,7 @@
 import Banner from "../../component/Banner/Banner";
 import NewsLetter from "../../component/NewsLetter/NewsLetter";
 import PopularTags from "../../component/PopularTags/PopularTags";
+import Pricing from "../../component/Pricing/Pricing";
 import RecentBlog from "../../component/RecentBlog/RecentBlog";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
                 <RecentBlog></RecentBlog>
                 <PopularTags></PopularTags>
                 <NewsLetter></NewsLetter>
+                <Pricing></Pricing>
             </div>
         </div>
     );
