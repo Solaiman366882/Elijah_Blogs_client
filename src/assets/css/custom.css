@@ -127,6 +127,9 @@ img{
 .all-tag-section .title-section h2::after {
     content: 'popular';
 }
+.pricing-section .title-section h2::after {
+    content: 'pricing';
+}
 .title-section h2::before {
     content: '';
     display: block;

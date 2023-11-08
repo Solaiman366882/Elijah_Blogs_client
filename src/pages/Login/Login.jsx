@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext } from "react";
+import { motion } from "framer-motion";
 
 const Login = () => {
 	const location = useLocation();
@@ -46,9 +47,13 @@ const Login = () => {
 	return (
 		<div className="w-full min-h-[80vh] flex flex-col justify-center items-center">
 			<div className="w-full">
-				<div className="login-title">
+				<motion.div className="login-title" animate={{
+					scale: [1, 2, 2, 1, 1],
+					rotate: [0, 0, 270, 270, 0],
+					borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+				}}>
 					<h2 className="text-6xl">Welcome Back!</h2>
-				</div>
+				</motion.div>
 				<form
 					className="flex mx-auto lg:max-w-md xl:max-w-xl flex-col gap-4"
 					onSubmit={handleLogin}

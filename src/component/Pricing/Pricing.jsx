@@ -1,15 +1,21 @@
 import "./Pricing.css";
+import { motion } from "framer-motion";
 
 const Pricing = () => {
 	return (
-		<div>
+		<div className="pricing-section">
 			<section className="card-section py-20">
-				<div className="title-section mb-6">
+				<motion.div
+					className="title-section mb-6"
+					animate={{
+						scale: [1, 2, 2, 1, 1],
+						rotate: [0, 0, 270, 270, 0],
+						borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+					}}
+				>
 					<h2>Pricing</h2>
-					<p>
-						see pricing for all kind of people
-					</p>
-				</div>
+					<p>see pricing for all kind of people</p>
+				</motion.div>
 				<div className="max-w-screen-lg px-5 mx-auto">
 					<div className="card-area grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 						<div className="card">

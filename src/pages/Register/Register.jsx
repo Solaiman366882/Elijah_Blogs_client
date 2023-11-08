@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const Register = () => {
 	const { createUser, handleGoogleLogin } = useContext(AuthContext);
@@ -59,9 +60,13 @@ const Register = () => {
 	return (
 		<div className="w-full min-h-[80vh] py-10 flex flex-col justify-center items-center">
 			<div className="w-full">
-				<div className="login-title">
+				<motion.div className="login-title" animate={{
+					scale: [1, 2, 2, 1, 1],
+					rotate: [0, 0, 270, 270, 0],
+					borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+				}}>
 					<h2 className="text-3xl md:text-6xl">Create Account</h2>
-				</div>
+				</motion.div>
 				<form
 					className="flex mx-auto lg:max-w-md xl:max-w-xl flex-col gap-4"
 					onSubmit={handleRegister}
