@@ -140,7 +140,7 @@ const BlogDetails = () => {
 								<h4>{shortDescription}</h4>
 								<p>{description}</p>
 							</div>
-							{user.email === blogOwnerEmail ? (
+							{user?.email === blogOwnerEmail ? (
 								<div className="update-blog mt-5 text-right">
 									<Link to={`/updateBlog/${id}`}>
 										<button className="btn">Update</button>

@@ -15,6 +15,7 @@
 /* ================== Global Css Start ================== */
 body {
     font-family: 'Inter', sans-serif;
+    background: var(--white);
 }
 
 h1,
