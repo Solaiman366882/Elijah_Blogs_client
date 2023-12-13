@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import Comment from "../../component/Comment/Comment";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import BlogDetailsSkeleton from "./BlogDetailsSkeleton";
+import { Dropdown } from "flowbite-react";
 
 const BlogDetails = () => {
 	const [comments, setComments] = useState([]);
@@ -102,6 +103,27 @@ const BlogDetails = () => {
 				.catch((err) => console.log(err));
 		}
 	};
+
+	const handleTwitterShare = (description) => {
+		const twitterShareURL = `https://twitter.com/share?url=${description}`;
+
+		window.open(twitterShareURL,"popup","width=500,height=500")
+	}
+
+
+	const handleWhatsappShare = (description) => {
+		const whatsappShareURL = `https://web.whatsapp.com/send?text=${description}`;
+
+		window.open(whatsappShareURL,"popup","width=500,height=500")
+	}
+
+	// const handleLinkedInShare = (description) => {
+	// 	const linkedInShareURL = `https://www.linkedin.com/sharing/share-offsite/?url=${description}`;
+
+	// 	window.open(linkedInShareURL,"popup","width=500,height=500")
+	// }
+
+
 	//if pending  it will show skeleton
 	if (isPending) {
 		return <BlogDetailsSkeleton></BlogDetailsSkeleton>;
@@ -140,15 +162,34 @@ const BlogDetails = () => {
 								<h4>{shortDescription}</h4>
 								<p>{description}</p>
 							</div>
-							{user?.email === blogOwnerEmail ? (
-								<div className="update-blog mt-5 text-right">
-									<Link to={`/updateBlog/${id}`}>
-										<button className="btn">Update</button>
-									</Link>
-								</div>
-							) : (
-								""
-							)}
+							<div className="flex justify-between items-center">
+								<Dropdown
+									label=""
+									className=""
+									dismissOnClick={false}
+									renderTrigger={() => (
+										<button className="btn">Share</button>
+									)}
+									inline
+								>
+									<Dropdown.Item onClick={()=>handleTwitterShare(description)}>Twitter</Dropdown.Item>
+									<Dropdown.Item onClick={() => handleWhatsappShare(description)}>Whats app</Dropdown.Item>
+									{/* <Dropdown.Item onClick={() => handleLinkedInShare(description)}>LinkedIN</Dropdown.Item>
+									<Dropdown.Item onClick={() => handleFacebookShare(description)}>Facebook</Dropdown.Item> */}
+									{/* <Dropdown.Item>Sign out</Dropdown.Item> */}
+								</Dropdown>
+								{user?.email === blogOwnerEmail ? (
+									<div className="update-blog mt-5 text-right">
+										<Link to={`/updateBlog/${id}`}>
+											<button className="btn">
+												Update
+											</button>
+										</Link>
+									</div>
+								) : (
+									""
+								)}
+							</div>
 						</div>
 					</div>
 				</div>
