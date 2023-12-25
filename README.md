@@ -15,8 +15,8 @@
 ## Important Link
 
  - [Live Website link](https://elaijas-blog.web.app/)
- - [Client Repository link](https://github.com/Porgramming-Hero-web-course/b8a11-client-side-Solaiman366882)
- - [Server Repository link](https://github.com/Porgramming-Hero-web-course/b8a11-server-side-Solaiman366882)
+ - [Client Repository link](https://github.com/Solaiman366882/Elijah_Blogs_client)
+ - [Server Repository link](https://github.com/Solaiman366882/EliJah_blog_server)
 
 
 
